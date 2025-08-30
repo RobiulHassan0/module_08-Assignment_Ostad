@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Declicious Restaurant</title>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -11,38 +12,82 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/abe1885868.js" crossorigin="anonymous"></script>
 <style>
-        body{
-            font-family: 'Poppins', sans-serif;
-        }
-        .hero {
-            background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHxlbnwwfHx8fDE2OTU2MjI5NzY&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center
-            ;
-            background-size: cover;
-            color: #fff;
-            display:  flex;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .menu-item img{
-            height: 200px;
-            object-fit: cover;
-        }
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        font-family: 'Poppins', sans-serif;
+    }
+    .hero {
+        background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzdGF1cmFudHxlbnwwfHx8fDE2OTU2MjI5NzY&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center
+        ;
+        background-size: cover;
+        color: #fff;
+        display:  flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .menu-item img{
+        height: 200px;
+        object-fit: cover;
+    }
 
-    /* Cards Hover */
-        .card{
-            transition: 0.3s;
+/* Cards Hover */
+    .card{
+        transition: 0.3s;
+    }
+    .card:hover{
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+        transform: scale(1.05);
+    }
+
+/* Animations */
+    @keyframes appear{
+        from{
+            opacity: 0;
+            scale: 0.5;
         }
-        .card:hover{
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
-            transform: scale(1.05);
+        to{
+            opacity: 1;
+            scale: 1;
         }
-    /* Icon Added */
-        span > i{
-            margin-left: 8px;
-        }
-    </style>
+    }
+    .animate{
+        animation: appear linear;
+        animation-timeline: view();
+        animation-range: entry 30% cover 40%;
+    }
+/* -----From Top------ */
+    .from-top {
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: slideDown 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes slideDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+/* ---- From Bottom------ */
+    .from-bottom {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -73,9 +118,9 @@
 
     <section class="hero">
         <div>
-            <h1>Welcome To Delicious</h1>
-            <p>Experience the taste of perfection</p>
-            <a href="#" class="btn btn-warning btn btn-lg mt-3">View Menu <span><i class="fa-solid fa-utensils"></i></span></a>
+            <h1 class="from-top display-2 fw-bold">Welcome To Delicious</h1>
+            <p class="fs-3 from-bottom">Experience the taste of perfection</p>
+            <a href="#" class="from-bottom btn btn-warning btn btn-lg mt-3">View Menu <span class="ms-2"><i class="fa-solid fa-utensils"></i></span></a>
         </div>
     </section>
 
@@ -90,8 +135,8 @@
 
     <!-- Menu Section -->
 
-    <section id="menu" class="py-5 bg-light">
-        <div class="container">
+    <section id="menu view" class="py-5 bg-light">
+        <div class="container animate">
             <h2 class="text-center mb-4">Our Menu</h2>
             <div class="row g-4">
 
@@ -99,7 +144,7 @@
                     <div class="card">
                         <img class="card-img-top" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Dish-1 Image">
                         <div class="card-body">
-                            <h5 class="card-title">Grilled Stick <span><i class="fa-solid fa-drumstick-bite"></i></span></h5>
+                            <h5 class="card-title">Grilled Stick <span class="ms-2"><i class="fa-solid fa-drumstick-bite"></i></span></h5>
                             <p class="card-text">$25</p>
                         </div>
                     </div>
@@ -109,7 +154,7 @@
                     <div class="card">
                         <img class="card-img-top" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Dish-1 Image">
                         <div class="card-body">
-                            <h5 class="card-title">Pasta Delight <span><i class="fa-solid fa-pizza-slice"></i></span></h5>
+                            <h5 class="card-title">Pasta Delight <span class="ms-2"><i class="fa-solid fa-pizza-slice"></i></span></h5>
                             <p class="card-text">$25</p>
                         </div>
                     </div>
@@ -119,7 +164,7 @@
                     <div class="card">
                         <img class="card-img-top" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Dish-1 Image">
                         <div class="card-body">
-                            <h5 class="card-title">Fresh Salad <span><i class="fa-solid fa-leaf"></i></span></h5>
+                            <h5 class="card-title">Fresh Salad <span class="ms-2"><i class="fa-solid fa-leaf"></i></span></h5>
                             <p class="card-text">$25</p>
                         </div>
                     </div>
@@ -134,8 +179,8 @@
 
     <section id="contact" class="py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Reserve a Table</h2>
-            <div class="row g-4 justify-content-center">
+            <h2 class="text-center mb-4 from-top">Reserve a Table</h2>
+            <div class="row g-4 justify-content-center from-bottom">
                 <div class="col-md-4">
                     <input type="text" class="form-control" placeholder="Name" name="" id="" required>
                 </div>
@@ -158,7 +203,7 @@
               
                 <div class="col-12 text-center">
                     <button type="button" class="btn btn-warning btn-lg mt-3">
-                        Book Now
+                        Book Now <span class="ms-2"><i class="fa-solid fa-calendar-check"></i></span>
                     </button>
                 </div>
             </div>
